@@ -12,18 +12,20 @@ class CommentForm extends Form
     #[Rule('required')]
     public string $comment = '';
 
-    public function store($articlesId): void
+    public function store($articlesId)
     {
         $user = \App\Models\User::find(1);
 
         $this->validate();
 
-        Comment::create([
+        $comment = Comment::create([
             'user_id' => $user->id,
             'comment' => $this->comment,
             'article_id' => $articlesId
         ]);
 
         $this->reset();
+
+        return $comment;
     }
 }

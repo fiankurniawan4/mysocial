@@ -13,10 +13,14 @@ class Create extends Component
 
     public CommentForm $form;
     public Article $articles;
+    #[\Livewire\Attributes\On('commentAdded')]
+    public function updateList($articles) {
+    }
 
-    public function save(): void
+    public function save()
     {
-        $this->form->store($this->articles->id);
+        $post = $this->form->store($this->articles->id);
+        $this->dispatch('commentAdded', $this->articles);
     }
 
     public function render()

@@ -8,6 +8,9 @@ use Livewire\Component;
 
 class Listcomment extends Component
 {
+    #[\Livewire\Attributes\On('commentAdded')]
+    public function updateList($articles) {
+    }
 
     public Article $articles;
 

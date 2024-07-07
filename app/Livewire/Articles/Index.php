@@ -10,6 +10,10 @@ use Livewire\Component;
 class Index extends Component
 {
 
+    #[\Livewire\Attributes\On('commentAdded')]
+    public function updateList($articles) {
+    }
+
     public $slug;
 
     public function mount($slug)
