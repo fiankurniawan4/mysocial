@@ -6,7 +6,7 @@
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component"
+                    <img alt="User"
                         src="https://www.gravatar.com/avatar/1a2dc59abe16bd6f16165b76ffc69a50?d=mm&s=100" />
                 </div>
             </div>
