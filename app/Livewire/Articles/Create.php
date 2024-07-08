@@ -29,20 +29,6 @@ class Create extends Component
         $this->dispatch('commentAdded', $this->articles);
     }
 
-    // public function like($id) {
-    //     $data = [
-    //         'comment_id' => $id,
-    //         'user_id' => auth()->id()
-    //     ];
-
-    //     $like = Like::where($data);
-    //     if ($like->count() > 0) {
-    //         $like->delete();
-    //     } else {
-    //         Like::create($data);
-    //     }
-    //     return;
-    // }
     public function render()
     {
         return view('livewire.articles.create',
