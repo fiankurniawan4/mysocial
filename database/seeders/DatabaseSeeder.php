@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
             'username' => 'fiank',
         ]);
 
-        Article::factory(10)->create();
+        // Article::factory(10)->create();
     }
 }

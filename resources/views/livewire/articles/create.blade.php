@@ -4,7 +4,7 @@
         <p class="text-gray-400 font-mono">{{ $articles->created_at->diffForHumans() }}</p>
         <p class="text-orange-400 font-mono">{{ $articles->user->name }}</p>
     </div>
-    <p class="text-md lg:text-xl font-sans">{{ $articles->body }}</p>
+    <p class="text-md lg:text-xl font-sans">{!! nl2br(e($articles->body)) !!}</p>
     @auth
     <form wire:submit='save' class="mt-4">
         <label for="comment" class="text-lg font-bold">[{{ $total_comments }}] Comment</label>

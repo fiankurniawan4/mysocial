@@ -22,11 +22,16 @@ class Home extends Component
     public function save() {
         $this->validate();
 
+        $slug = Str::slug($this->title);
+        if (Article::where('slug', $slug)->exists()) {
+            $slug = $slug . '-' . time();
+        }
+
         $myPost = Article::create([
             'title' => $this->title,
             'body' => $this->content,
             'description' => substr($this->content, 0, 100),
-            'slug' => Str::slug($this->title),
+            'slug' => $slug,
             'user_id' => auth()->id(),
         ]);
 
