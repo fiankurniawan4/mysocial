@@ -2,12 +2,13 @@
 
 namespace App\Livewire\Articles;
 
-use App\Livewire\Forms\ChangeReplyForm;
-use App\Livewire\Forms\CommentForm;
-use App\Livewire\Forms\ReplyForm;
+use App\Models\Like;
 use App\Models\Article;
 use App\Models\Comment;
 use Livewire\Component;
+use App\Livewire\Forms\ReplyForm;
+use App\Livewire\Forms\CommentForm;
+use App\Livewire\Forms\ChangeReplyForm;
 
 class Listcomment extends Component
 {
@@ -56,7 +57,7 @@ class Listcomment extends Component
             $this->edit_comment_id = '';
         } else {
             // flash('Komentar tidak ditambahkan', 'danger');
-            $this->mreply->comment = '';
+            $this->mchange->comment = '';
         }
     }
 
@@ -70,20 +71,20 @@ class Listcomment extends Component
         }
     }
 
-    // public function like($id) {
-    //     $data = [
-    //         'comment_id' => $id,
-    //         'user_id' => auth()->id()
-    //     ];
+    public function like($id) {
+        $data = [
+            'comment_id' => $id,
+            'user_id' => auth()->id()
+        ];
 
-    //     $like = Like::where($data);
-    //     if ($like->count() > 0) {
-    //         $like->delete();
-    //     } else {
-    //         Like::create($data);
-    //     }
-    //     return;
-    // }
+        $like = Like::where($data);
+        if ($like->count() > 0) {
+            $like->delete();
+        } else {
+            Like::create($data);
+        }
+        return;
+    }
 
     public function render()
     {
