@@ -14,12 +14,11 @@ class CommentForm extends Form
 
     public function store($articlesId)
     {
-        $user = \App\Models\User::find(1);
 
         $this->validate();
 
         $comment = Comment::create([
-            'user_id' => $user->id,
+            'user_id' => auth()->id(),
             'comment' => $this->comment,
             'article_id' => $articlesId
         ]);

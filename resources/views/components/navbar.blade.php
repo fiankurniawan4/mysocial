@@ -13,10 +13,10 @@
             <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 @auth
                     <x-nav-link href='#'>Profile</x-nav-link>
-                    <x-nav-link href='#'>Logout</x-nav-link>
+                    <x-nav-link href="{{ route('logout') }}">Logout</x-nav-link>
                 @endauth
                 @guest
-                    <x-nav-link href="#">Login</x-nav-link>
+                    <x-nav-link href="{{ route('login') }}">Login</x-nav-link>
                     <x-nav-link href="#">Register</x-nav-link>
                 @endguest
             </ul>

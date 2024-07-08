@@ -7,7 +7,6 @@ use App\Livewire\Forms\CommentForm;
 use App\Livewire\Forms\ReplyForm;
 use App\Models\Article;
 use App\Models\Comment;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Create extends Component
@@ -20,7 +19,8 @@ class Create extends Component
     public $body2, $comment_id, $edit_comment_id;
 
     #[\Livewire\Attributes\On('commentAdded')]
-    public function updateList($articles) {
+    public function updateList($articles)
+    {
     }
 
     public function save()
@@ -43,9 +43,14 @@ class Create extends Component
     //     }
     //     return;
     // }
-
     public function render()
     {
-        return view('livewire.articles.create');
+        return view('livewire.articles.create',
+            [
+                'comments' => Comment::with(['user', 'childrens'])
+                    ->where('article_id', $this->articles->id)
+                    ->whereNull('comment_id')->get(),
+                'total_comments' => Comment::where('article_id', $this->articles->id)->count(),
+            ]);
     }
 }

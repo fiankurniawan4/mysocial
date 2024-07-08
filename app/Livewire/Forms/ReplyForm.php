@@ -20,7 +20,7 @@ class ReplyForm extends Form
         $comment = Comment::create([
             'comment' => $this->comment,
             'article_id' => $article_id,
-            'user_id' => 1,
+            'user_id' => auth()->id(),
             'comment_id' => $comment->comment_id ? $comment->comment_id : $comment->id
         ]);
 

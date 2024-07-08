@@ -17,10 +17,10 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(6, true),
+            'title' => fake()->sentence(3, true),
             'slug' => fake()->slug,
-            'description' => fake()->sentence(10, true),
-            'body' => fake()->paragraph(25, true),
+            'description' => fake()->sentence(25, true),
+            'body' => fake()->paragraph(35, true),
             'user_id' => 1,
         ];
     }
