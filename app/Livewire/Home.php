@@ -44,7 +44,7 @@ class Home extends Component
             return;
         }
 
-        $form = $this->edit->store();
+        $this->edit->store();
         // dd($this->articlesEdit);
         $this->dispatch('postAdded', $this->articlesEdit);
     }
