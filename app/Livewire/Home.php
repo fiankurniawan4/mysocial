@@ -40,6 +40,10 @@ class Home extends Component
     }
 
     public function editForm() {
+        if (auth()->id() != $this->articlesEdit->user_id) {
+            return;
+        }
+
         $form = $this->edit->store();
         // dd($this->articlesEdit);
         $this->dispatch('postAdded', $this->articlesEdit);
