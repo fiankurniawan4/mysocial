@@ -1,6 +1,6 @@
 <div class="navbar bg-base-100">
     <div class="flex-1">
-        <a class="btn btn-ghost text-xl">MySocial</a>
+        <a href="/" class="btn btn-ghost text-xl">MySocial</a>
     </div>
     <div class="flex-none gap-2">
         <div class="dropdown dropdown-end">
@@ -12,7 +12,7 @@
             </div>
             <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 @auth
-                    <x-nav-link href='#'>Profile</x-nav-link>
+                    <x-nav-link href='/profile/{{ Auth::user()->id }}'>Profile</x-nav-link>
                     <x-nav-link href="{{ route('logout') }}">Logout</x-nav-link>
                 @endauth
                 @guest

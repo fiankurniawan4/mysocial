@@ -49,4 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    // TODO: Melanjutkan project dengan articles privacy dan friends
+    // public function friends(): HasMany
+    // {
+    //     return $this->hasMany(Friend::class);
+    // }
 }
