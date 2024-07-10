@@ -17,15 +17,13 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    // TODO: Melanjutkan project dengan articles privacy dan friends
+    public function privacy(): BelongsTo
+    {
+        return $this->belongsTo(ArticlePrivacy::class);
+    }
 
-    // public function privacy(): BelongsTo
-    // {
-    //     return $this->belongsTo(ArticlePrivacy::class);
-    // }
-
-    // public function isGlobal(): bool
-    // {
-    //     return $this->privacy->is_global;
-    // }
+    public function isGlobal(): bool
+    {
+        return $this->privacy->is_global;
+    }
 }
