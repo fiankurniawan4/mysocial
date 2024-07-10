@@ -12,7 +12,9 @@
             </div>
             <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 @auth
-                    <x-nav-link href='/profile/{{ Auth::user()->id }}'>Profile</x-nav-link>
+                <li>
+                    <a href="/profile/{{ auth()->user()->id }}">Profile</a>
+                </li>
                     <x-nav-link href="{{ route('logout') }}">Logout</x-nav-link>
                 @endauth
                 @guest

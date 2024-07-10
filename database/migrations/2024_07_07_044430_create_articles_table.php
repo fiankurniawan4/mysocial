@@ -19,13 +19,6 @@ return new class extends Migration
             $table->text('body');
             // $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('privacy_id')->constrained('article_privacies')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
-        });
-
-        Schema::create('article_privacies', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('article_id')->constrained('articles')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('is_global')->default(true);
             $table->timestamps();
         });
@@ -34,6 +27,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('friend_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('is_accepted')->default(false);
             $table->timestamps();
         });
 

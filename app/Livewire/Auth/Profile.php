@@ -43,6 +43,7 @@ class Profile extends Component
     }
 
     public function mount($id) {
+        // dd($id);
         $user = User::find($id);
 
         $this->id = $user->id;

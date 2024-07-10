@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    public function friends(): HasMany
+    {
+        return $this->hasMany(Friend::class, 'user_id', 'id');
+    }
+
     // TODO: Melanjutkan project dengan articles privacy dan friends
     // public function friends(): HasMany
     // {
