@@ -22,11 +22,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('friends', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('friend_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('is_accepted')->default(false);
+            $table->foreignId('sender_id');
+            $table->foreignId('receiver_id');
+            $table->text('message');
             $table->timestamps();
         });
 
