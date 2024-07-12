@@ -27,24 +27,21 @@ class Home extends Component
             return;
         }
 
-        $this->articlesEdit = '';
-        $this->edit->title2 = '';
-        $this->edit->content2 = '';
 
         $articles = Article::find($id);
         $this->articlesEdit = $articles;
         $this->edit->edit = $articles;
         $this->edit->title2 = $articles->title;
         $this->edit->content2 = $articles->body;
+        // dd($this->all());
         // dd($this->edit);
     }
 
     public function editForm() {
-        if (auth()->id() != $this->articlesEdit->user_id) {
-            return;
-        }
-
         $this->edit->store();
+        $this->articlesEdit = '';
+        $this->edit->title2 = '';
+        $this->edit->content2 = '';
         // dd($this->articlesEdit);
         $this->dispatch('postAdded', $this->articlesEdit);
     }
