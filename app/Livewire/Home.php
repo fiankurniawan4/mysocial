@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Livewire\Forms\EditForm;
 use App\Models\Article;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;

@@ -77,6 +77,9 @@ class Chat extends Component
 
     public function render()
     {
+        if(auth()->user()->id == $this->user->id){
+            abort(404, 'You cannot chat with yourself');
+        }
         return view('livewire.chat.chat');
     }
 }

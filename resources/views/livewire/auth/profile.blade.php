@@ -4,7 +4,7 @@
         <p class="">Name: {{ $user->name }}</p>
         <p class="mb-4">Jumlah Articles: {{ $total_articles }}</p>
         <div class="flex flex-row gap-2">
-            <button class="btn btn-info text-white">Message</button>
+            <a href='{{route('chat', $user->id)}}' class="btn btn-info text-white">Message</a>
             @if ($user->id == auth()->id())
                 <button data-modal-target="default-modal" data-modal-toggle="default-modal"
                     class="btn btn-warning text-white">Edit</button>
