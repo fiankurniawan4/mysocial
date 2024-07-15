@@ -10,7 +10,7 @@ use Livewire\Form;
 class EditForm extends Form
 {
     #[Rule('required')]
-    public $title2, $content2;
+    public $title, $content;
     public $edit;
 
     public function store() {
@@ -20,13 +20,10 @@ class EditForm extends Form
         ]);
 
         $articles = Article::where('id', $this->edit->id)->update([
-            'title' => $this->title2,
-            'body' => $this->content2,
-            'description' => substr($this->content2, 0, 100),
+            'title' => $this->title,
+            'body' => $this->content,
+            'description' => substr($this->content, 0, 100),
         ]);
-
-        $this->title2 = '';
-        $this->content2 = '';
 
         $this->reset();
 

@@ -1,20 +1,5 @@
 <div>
-    @foreach ($articles as $item)
-        <div class="m-6">
-            <a href="/articles/{{ $item->slug }}" class="text-2xl font-bold hover:underline">{{ $item->title }}</a>
-            @if (auth()->user()->id == $item->user_id)
-                <label wire:click='selectEdit({{ $item->id }})' for="editModal" class="text-blue-500 font-sans text-sm hover:underline ml-4 cursor-pointer transition">Edit</label>
-                <button wire:click='delete({{ $item->id }})' class="text-red-500 font-sans text-sm hover:underline">Delete</button>
-            @endif
-            <div class="">
-                <span class="text-gray-600">By: <a href="/profile/{{ $item->user->id }}"
-                        class="text-blue-500 hover:underline">{{ $item->user->name }}</a></span>
-                <span class="text-gray-600"> - {{ $item->created_at->diffForHumans() }}</span>
-            </div>
-            <p class="text-gray-600">{{ $item->description }}</p>
-        </div>
-        <hr>
-    @endforeach
+    @livewire('home-index', ['articles' => $articles])
     <div class="fixed bottom-0 right-0 m-4">
         <label for="my_modal_7"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:underline cursor-pointer transition">
@@ -44,5 +29,4 @@
         </div>
         <label class="modal-backdrop" for="my_modal_7">Close</label>
     </div>
-    <x-modal-edit/>
 </div>

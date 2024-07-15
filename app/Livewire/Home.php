@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\EditForm;
 use App\Models\Article;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Illuminate\Support\Str;
 
 #[Title('Home')]
 class Home extends Component
@@ -15,45 +15,9 @@ class Home extends Component
 
     #[Rule('required')]
     public $title, $content;
-    public EditForm $edit;
-    public $articlesEdit;
 
-    #[\Livewire\Attributes\On('postAdded')]
-    public function updateList($articles) {
-    }
-
-    public function selectEdit($id) {
-        if (auth()->id() != Article::find($id)->user_id) {
-            return;
-        }
-
-
-        $articles = Article::find($id);
-        $this->articlesEdit = $articles;
-        $this->edit->edit = $articles;
-        $this->edit->title2 = $articles->title;
-        $this->edit->content2 = $articles->body;
-        // dd($this->all());
-        // dd($this->edit);
-    }
-
-    public function editForm() {
-        $this->edit->store();
-        $this->articlesEdit = '';
-        $this->edit->title2 = '';
-        $this->edit->content2 = '';
-        // dd($this->articlesEdit);
-        $this->dispatch('postAdded', $this->articlesEdit);
-    }
-
-    public function delete($id) {
-        if (auth()->id() != Article::find($id)->user_id) {
-            return;
-        }
-        Article::destroy($id);
-    }
-
-    public function save() {
+    public function save()
+    {
         $this->validate([
             'title' => 'required|min:5',
             'content' => 'required|min:8',
@@ -79,10 +43,15 @@ class Home extends Component
         $this->dispatch('postAdded', $myPost);
     }
 
+    #[\Livewire\Attributes\On('postAdded')]
+    public function updateList($articles)
+    {
+    }
+
     public function render()
     {
         return view('livewire.home', [
-            'articles' => Article::all(),
+            'articles' => Article::latest()->get(),
         ]);
     }
 }
