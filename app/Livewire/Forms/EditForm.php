@@ -15,8 +15,8 @@ class EditForm extends Form
 
     public function store() {
         $this->validate([
-            'title2' => 'required',
-            'content2' => 'required',
+            'title' => 'required',
+            'content' => 'required',
         ]);
 
         $articles = Article::where('id', $this->edit->id)->update([
