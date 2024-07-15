@@ -77,6 +77,9 @@ class Chat extends Component
 
     public function render()
     {
+        if(!$this->user){
+            abort(404, 'User not found');
+        }
         if(auth()->user()->id == $this->user->id){
             abort(404, 'You cannot chat with yourself');
         }
